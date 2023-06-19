@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+  <!-- Encabezado -->
+  <div class="flex justify-center items-center">
+    <!-- Logo -->
+    <div class="rounded-lg p-4">
+      <img src="{{ asset('images/allfor1-bg-black.png') }}" alt="Logo" class="h-1/5 w-1/2">
+    </div>
+    <!-- Descripción -->
+    <div class="rounded-lg p-4 bg-red-600">
+      <p style="color: white;">"Allfor1 es una empresa joven y ambiciosa que busca conectar a personas con la misma pasión por los deportes. Nos enorgullece ser parte de una comunidad deportiva activa y diversa en la ciudad. Creemos en el poder de las relaciones humanas y la importancia de mantenerse físicamente activo, y es por eso que trabajamos incansablemente para proporcionar una plataforma fácil de usar para que la gente pueda encontrar compañeros de entrenamiento y organizar actividades deportivas en la ciudad. Únete a nosotros en la misión de hacer de la ciudad un lugar más activo y saludable."</p>
+    </div>
+  </div>
+  <!-- Título de nuestros servicios -->
+  <h2 class="text-2xl font-bold mt-8 "align="center" >Nuestros servicios</h2>
+
+  <!-- Actividades -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4 justify-center">
+  {% for activity in activities %}
+    <!-- actividades una a una -->
+    <div class="bg-white rounded-lg shadow p-4">
+      <img src="{{ asset('images/' ~ activity.image) }}" alt="{{ activity.name }}" class="h-32 w-5/12 border rounded-full mx-auto">
+      <h3 class="text-xl font-bold mt-4">{{ activity.name }}</h3>
+      <p>Duración: {{ activity.duration|date('H:i') }} horas</p>
+      <p>Precio: {{ activity.price }} euros</p>
+      <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Reservar ahora</button>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
