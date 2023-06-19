@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="bg-red-500 min-h-screen flex justify-center items-center">
+    <form method="post" class="w-full max-w-md">
+        <div class="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
+            {% if error %}
+                <div class="text-red-500">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <div>
+                <h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Iniciar sesión</h1>
+                <p class="text-center text-sm mb-8 font-semibold text-green-700 tracking-wide cursor-pointer">Inicia sesión para acceder a tu cuenta</p>
+            </div>
+            <div class="space-y-4">
+                <label for="inputEmail" class="block">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="border border-gray-300 rounded-md p-2 w-full" autocomplete="email" required autofocus>
+                <label for="inputPassword" class="block">Password</label>
+                <input type="password" name="password" id="inputPassword" class="border border-gray-300 rounded-md p-2 w-full" autocomplete="current-password" required>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="text-center mt-6">
+                <button type="submit" class="py-3 w-64 text-xl text-white bg-red-500 rounded-2xl">Iniciar sesión</button>
+                <p class="mt-4 text-sm">¿No tienes una cuenta? <a href="{{ path('app_register') }}" class="underline cursor-pointer">Regístrate</a></p>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

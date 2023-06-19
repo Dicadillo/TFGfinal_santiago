@@ -1,0 +1,9 @@
+# config/routes.yaml
+app:
+    resource: '../src/Controller/'
+    type: annotation
+
+app_home:
+    path: /
+    controller: App\Controller\HomeController::index
+    methods: [GET]
