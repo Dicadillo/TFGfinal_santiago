@@ -19,7 +19,7 @@
             <p>Precio: {{ activity.price }} euros</p>
           </div>
           {% if app.user %}
-            <a href="{{ path('app_reserve', {'id': activity.id}) }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Reservar ahora</a>
+            <a href="{{ path('app_' ~ activity.name) }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Reservar ahora</a>
           {% else %}
             <a href="{{ path('app_login') }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Iniciar sesión para reservar</a>
           {% endif %}

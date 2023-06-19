@@ -18,10 +18,10 @@ final class Version20230619084317 extends AbstractMigration
     }
 
     public function up(Schema $schema): void
-    {
-        // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE activity CHANGE duration duration INT DEFAULT NULL');
-    }
+{
+    $this->addSql('ALTER TABLE user CHANGE roles roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\';');
+}
+
 
     public function down(Schema $schema): void
     {
