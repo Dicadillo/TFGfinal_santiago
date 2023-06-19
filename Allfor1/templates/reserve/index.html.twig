@@ -1,3 +1,5 @@
+{# templates/reserve/index.html.twig #}
+
 {% extends 'base.html.twig' %}
 
 {% block content %}
@@ -13,7 +15,13 @@
     </div>
   </div>
   
-  <!-- Aquí puedes añadir el formulario de reserva o cualquier otro contenido relacionado con la reserva -->
+  <!-- Formulario de reserva -->
+  <div class="mt-4">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Reservar ahora</button>
+    {{ form_end(form) }}
+  </div>
 
   <!-- Botón de volver a la lista de actividades -->
   <a href="{{ path('app_activity') }}" class="block text-center mt-4 underline">Volver a la lista de actividades</a>
