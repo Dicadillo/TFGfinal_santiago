@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+  <!-- Encabezado de reserva -->
+  <div class="flex justify-center items-center">
+    <!-- Logo -->
+    <div class="rounded-lg p-4">
+      <img src="{{ asset('images/allfor1-bg-black.png') }}" alt="Logo" class="h-1/5 w-1/2">
+    </div>
+    <!-- Descripción de reserva -->
+    <div class="rounded-lg p-4 bg-red-600">
+      <p style="color: white;">Reservando la actividad: {{ activity.name }}</p>
+    </div>
+  </div>
+  
+  <!-- Aquí puedes añadir el formulario de reserva o cualquier otro contenido relacionado con la reserva -->
+
+  <!-- Botón de volver a la lista de actividades -->
+  <a href="{{ path('app_activity') }}" class="block text-center mt-4 underline">Volver a la lista de actividades</a>
+{% endblock %}
