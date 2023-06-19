@@ -2,11 +2,11 @@
 
 {% block content %}
 
- <div class="grid gap-8 mt-4 justify-center rounded-lg p-4 bg-red-600" >
-  <!-- Título de nuestros servicios -->
-<h2 class="text-2xl font-bold mt-8 text-white" align="center">Nuestros servicios</h2>
+  <div class="grid gap-8 mt-4 justify-center rounded-lg p-4 bg-red-600">
+    <!-- Título de nuestros servicios -->
+    <h2 class="text-2xl font-bold mt-8 text-white" align="center">Nuestros servicios</h2>
 
-  <!-- Actividades -->
+    <!-- Actividades -->
     {% for activity in activities %}
       <!-- Actividad individual -->
       <div class="bg-white rounded-lg shadow p-4 flex flex-col justify-between">
@@ -18,9 +18,14 @@
             <p>Duración: {{ activity.duration|date('H:i') }} horas</p>
             <p>Precio: {{ activity.price }} euros</p>
           </div>
-          <a href="{{ path('app_reserve', {'id': activity.id}) }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Reservar ahora</a>
+          {% if app.user %}
+            <a href="{{ path('app_reserve', {'id': activity.id}) }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Reservar ahora</a>
+          {% else %}
+            <a href="{{ path('app_login') }}" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Iniciar sesión para reservar</a>
+          {% endif %}
         </div>
       </div>
     {% endfor %}
   </div>
+
 {% endblock %}

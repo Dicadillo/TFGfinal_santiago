@@ -14,53 +14,47 @@
 <body class="bg-white">
     <header class="flex items-center justify-between py-4 px-8 bg-red-500">
         <div class="flex items-center">
-       {# the image lives at "public/images/logo.png" #}
-     <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto border-e-2">
-        <span class="text-white ml-2 text-lg font-semibold">AllFor 1</span>
+            {# the image lives at "public/images/logo.png" #}
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto border-e-2">
+            <span class="text-white ml-2 text-lg font-semibold">AllFor 1</span>
         </div>
-
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="flex space-x-4 text-cyan-50">
-            <li class="nav-item">
-                <a class="nav-link" href="
-                {{ path('app_home') }}
-                ">Inicio</a>
-            </li>
-            {# <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_activities') }}">Actividades</a>
-            </li> #}
-            <li class="nav-item">
-                <a class="nav-link" href="
-                {{ path('app_contact') }}
-                ">Contacto</a>
-            </li>
-            {% if is_granted('ROLE_USER') %}
-                <li class="nav-item flex space-x-3 text-cyan-50">
-                    <a class="nav-link" href="
-                    {# {{ path('app_profile') }} #}
-                    ">Profile</a>
-                    <a class="nav-link" href="
-                    {{ path('app_logout') }}"
-                    ">Logout</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="
-                    {{ path('app_login') }}
-                    ">Login</a>
-                </li>
-            {% endif %}
-        </ul>
-    </div>
-</nav>
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="flex space-x-4 text-cyan-50">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_home') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_contact') }}">Contacto</a>
+                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_profile_index') }}">Profile</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_perfil') }}">Profile</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
     </header>
-   {% block javascripts %}
+   
+    {% block javascripts %}
     {% endblock %}
 
     <div class="container mx-auto py-8 px-4">
@@ -68,12 +62,11 @@
         {% endblock %}
     </div>
 
-    <footer class="py-4 px-8 bg-red-500 text-white text-center md:justify-between >
-    <p>
-        &copy; {{ "now"|date("Y") }} AllFor 1 | 
-        <a href="#">Contáctanos</a>
-    </p>
+    <footer class="py-4 px-8 bg-red-500 text-white text-center md:justify-between>
+        <p>
+            &copy; {{ "now"|date("Y") }} AllFor 1 | 
+            <a href="#">Contáctanos</a>
+        </p>
     </footer>
-
 </body>
 </html>
