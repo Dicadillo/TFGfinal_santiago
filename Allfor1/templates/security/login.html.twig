@@ -26,8 +26,8 @@
             </div>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             <div class="text-center mt-6">
-                <button type="submit" class="py-3 w-64 text-xl text-white bg-red-500 rounded-2xl">Iniciar sesión</button>
-                <p class="mt-4 text-sm">¿No tienes una cuenta? <a href="{{ path('app_register') }}" class="underline cursor-pointer">Regístrate</a></p>
+                <button type="submit" class="py-3 w-64 text-xl text-white bg-red-500 rounded-2xl  hover:bg-blue-600" >Iniciar sesión</button>
+                <p class="mt-4 text-sm">¿No tienes una cuenta? <a href="{{ path('app_register') }}" class="underline cursor-pointer ">Regístrate</a></p>
             </div>
         </div>
     </form>

@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    {% if app.user %} 
-        <div class="mb-3">
-            Bienvenido {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
     <div class="bg-red-500 min-h-screen flex justify-center items-center">
+
         <div class="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
             <div>
-                <h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Registro</h1>
-                <p class="text-center text-sm mb-8 font-semibold text-green-700 tracking-wide cursor-pointer">Crea una nueva cuenta</p>
-            </div>
+                <h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">
+    {% if app.user %} 
+        <div class="mb-3">
+            Bienvenido {{ app.user.lastname }}
+        </div>
+    {% endif %}
+        </h1>
+                <p class="text-center text-sm mb-8 font-semibold text-green-700 tracking-wide cursor-pointer">Editar datos</p>
+                    </div>
 
             {{ form_errors(form) }}
 
@@ -35,7 +36,7 @@
                         {{ form_label(form.lastname) }}
                         {{ form_widget(form.lastname) }}
                     </div>
-                    <button type="submit" class="bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Register</button>
+                    <button type="submit" class="bg-green-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Editar</button>
                 </form>
             </div>
         </div>
